@@ -10,7 +10,7 @@ Script does apt:
   * _**`full-upgrade`**_
   * _**`autoremove`**_
 
-Introduction:  
+Instruction:  
 
 1.  ```wget https://raw.githubusercontent.com/yyesilkaya/AptLoopScript/master/up.sh```  
 2.  ```sh up.sh```  
