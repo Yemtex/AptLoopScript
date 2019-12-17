@@ -9,6 +9,11 @@ Script does apt:
   * _**`upgrade`**_
   * _**`full-upgrade`**_
   * _**`autoremove`**_
+  
+Working Linux Distributions:
+
+  * Ubuntu
+  * Debian
 
 Instruction:  
 
