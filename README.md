@@ -17,5 +17,5 @@ Working Linux Distributions:
 
 Instruction:  
 
-1.  ```wget https://raw.githubusercontent.com/yyesilkaya/AptLoopScript/master/up.sh```  
+1.  ```wget https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh```  
 2.  ```sh up.sh```  
