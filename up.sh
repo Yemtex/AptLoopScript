@@ -16,7 +16,7 @@ echo "************************************************"
 while true; do
     read -p "Do you wish to reboot your pc [Y/N]?" yn
     case $yn in
-        [Yy]* ) reboot;;
+        [Yy]* ) reboot || systemctl reboot || shutdown -r now;;
         [Nn]* ) exit;;
         * ) echo "Please answer yes or no.";;
     esac
