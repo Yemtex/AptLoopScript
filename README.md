@@ -25,3 +25,6 @@ Instruction:
 1.  ```wget https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh```  
 2.  ```chmod +x up.sh```  
 3.  ```./up.sh```  
+
+Todo:
+- self-update
