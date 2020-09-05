@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="0.0.4"
+VERSION="0.0.5"
 
 SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
 
@@ -52,7 +52,8 @@ self_update()
         fi
     else
         echo "Found a new version $VERSION, updating myself..."
-		sudo mv -f "$NEWSCRIPT" "$FIRST_ARG"
+	sudo mv -f "$NEWSCRIPT" "$FIRST_ARG"
+	sudo chmod +x "$FIRST_ARG"
 		
         main
     fi
