@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="0.0.3"
+VERSION="0.0.4"
 
 SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
 
@@ -15,16 +15,16 @@ FIRST_ARG="$1"
 
 display_center()
 {
-    # red=$'\e[1;31m'
-    # grn=$'\e[1;32m'
-    # yel=$'\e[1;33m'
-    # blu=$'\e[1;34m'
-    # mag=$'\e[1;35m'
-    # cyn=$'\e[1;36m'
-    # end=$'\e[0m'
+    red=$'\e[1;31m'
+    grn=$'\e[1;32m'
+    yel=$'\e[1;33m'
+    blu=$'\e[1;34m'
+    mag=$'\e[1;35m'
+    cyn=$'\e[1;36m'
+    end=$'\e[0m'
 
     COLUMNS=$(tput cols)
-    printf "\e[1;31m""%*s\n""\e[0m" $(((${#1}+$COLUMNS)/2)) "$1"
+    printf "${$red}%*s\n${$end}" $(((${#1}+$COLUMNS)/2)) "$1"
 }
 
 
@@ -33,7 +33,7 @@ self_update()
     if [ ! -f "$NEWSCRIPT" ]
     then
         wget -O "$NEWSCRIPT" "$SCRIPT_URL"
-
+		
         # checking for difference in both scripts
         DIFF=$(diff "$SCRIPT_FULLPATH" "$NEWSCRIPT")
 
@@ -53,9 +53,9 @@ self_update()
     else
         echo "Found a new version $VERSION, updating myself..."
 		sudo mv -f "$NEWSCRIPT" "$FIRST_ARG"
-
+		
         main
-    fi          
+    fi
 }
 
 
@@ -65,20 +65,19 @@ main()
     display_center "RUNNING $VERSION"
     display_center "********************************************************************"
 
-
 	for i in 1 2
 	do
 		display_center "********************************************************************"
-		display_center "STARTING"
-		display_center "********************************************************************"
+        display_center "STARTING"
+        display_center "********************************************************************"
+		
 		sudo apt update && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y
 	done
-
 
 	display_center "********************************************************************"
     display_center "REBOOT"
     display_center "********************************************************************"
-
+	
 	while true; do
 		read -p "Do you wish to reboot your pc [Y/N]?" yn
 		case $yn in
