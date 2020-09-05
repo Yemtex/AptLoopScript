@@ -52,7 +52,7 @@ self_update()
         fi
     else
         echo "Found a new version $VERSION, updating myself..."
-		# mv -f "$NEWSCRIPT" "$FIRST_ARG"
+		mv -f "$NEWSCRIPT" "$FIRST_ARG"
 
         main
     fi
