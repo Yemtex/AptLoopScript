@@ -1,10 +1,10 @@
 #!/bin/bash
 
-VERSION="0.0.2"
+VERSION="0.0.3"
 
 SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
 
-SCRIPT_FULLPATH="$0"
+SCRIPT_FULLPATH=$(readlink -f "$0")
 SCRIPT_DIRECTORY=$(dirname "$SCRIPT_FULLPATH")
 
 NEWSCRIPT="/tmp/newup.sh"
@@ -52,7 +52,7 @@ self_update()
         fi
     else
         echo "Found a new version $VERSION, updating myself..."
-		mv -f "$NEWSCRIPT" "$FIRST_ARG"
+		sudo mv -f "$NEWSCRIPT" "$FIRST_ARG"
 
         main
     fi
