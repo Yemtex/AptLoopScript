@@ -1,8 +1,8 @@
 #!/bin/bash
 
-VERSION="0.0.6"
+VERSION="0.0.7"
 
-SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
+SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/dev/up.sh"
 
 SCRIPT_FULLPATH=$(readlink -f "$0")
 SCRIPT_DIRECTORY=$(dirname "$SCRIPT_FULLPATH")
@@ -46,6 +46,9 @@ self_update()
             # now exit this old instance
             exit 1
         else
+            # deleting the downloaded script (which is the same)
+            sudo rm -rf "$NEWSCRIPT"
+
             echo "Running version $VERSION, already the latest version."
 
             main
