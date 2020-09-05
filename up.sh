@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="0.0.5"
+VERSION="0.0.6"
 
 SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
 
@@ -15,16 +15,16 @@ FIRST_ARG="$1"
 
 display_center()
 {
-    red=$'\e[1;31m'
-    grn=$'\e[1;32m'
-    yel=$'\e[1;33m'
-    blu=$'\e[1;34m'
-    mag=$'\e[1;35m'
-    cyn=$'\e[1;36m'
-    end=$'\e[0m'
+    RED=$'\e[1;31m'
+    GREEN=$'\e[1;32m'
+    YELLOW=$'\e[1;33m'
+    BLUE=$'\e[1;34m'
+    MAGENTA=$'\e[1;35m'
+    CYAN=$'\e[1;36m'
+    END=$'\e[0m'
 
     COLUMNS=$(tput cols)
-    printf "${$red}%*s\n${$end}" $(((${#1}+$COLUMNS)/2)) "$1"
+    printf "$RED%*s\n$END" $(((${#1}+$COLUMNS)/2)) "$1"
 }
 
 
@@ -33,7 +33,7 @@ self_update()
     if [ ! -f "$NEWSCRIPT" ]
     then
         wget -O "$NEWSCRIPT" "$SCRIPT_URL"
-		
+
         # checking for difference in both scripts
         DIFF=$(diff "$SCRIPT_FULLPATH" "$NEWSCRIPT")
 
@@ -51,11 +51,18 @@ self_update()
             main
         fi
     else
-        echo "Found a new version $VERSION, updating myself..."
-	sudo mv -f "$NEWSCRIPT" "$FIRST_ARG"
-	sudo chmod +x "$FIRST_ARG"
-		
-        main
+        if [ "$FIRST_ARG" == "" ]
+        then
+            echo "Found a new version $VERSION, updating myself..."
+            sudo mv -f "$NEWSCRIPT" "$FIRST_ARG"
+
+            main
+        else
+            display_center "********************************************************************"
+            display_center "THE SCRIPT WAS NOT EXECUTED CORRECTLY"
+            display_center "Maybe Newup.sh executes itself and does not have the passed parameter"          
+            display_center "********************************************************************"
+        fi
     fi
 }
 
@@ -78,7 +85,7 @@ main()
 	display_center "********************************************************************"
     display_center "REBOOT"
     display_center "********************************************************************"
-	
+
 	while true; do
 		read -p "Do you wish to reboot your pc [Y/N]?" yn
 		case $yn in
