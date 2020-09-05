@@ -1,8 +1,8 @@
 #!/bin/bash
 
-VERSION="0.0.6"
+VERSION="1.0.0"
 
-SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
+SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/dev/up.sh"
 
 SCRIPT_FULLPATH=$(readlink -f "$0")
 SCRIPT_DIRECTORY=$(dirname "$SCRIPT_FULLPATH")
@@ -15,13 +15,13 @@ FIRST_ARG="$1"
 
 display_center()
 {
-    RED=$'\e[1;31m'
-    GREEN=$'\e[1;32m'
-    YELLOW=$'\e[1;33m'
-    BLUE=$'\e[1;34m'
-    MAGENTA=$'\e[1;35m'
-    CYAN=$'\e[1;36m'
-    END=$'\e[0m'
+    RED='\e[1;31m'
+    GREEN='\e[1;32m'
+    YELLOW='\e[1;33m'
+    BLUE='\e[1;34m'
+    MAGENTA='\e[1;35m'
+    CYAN='\e[1;36m'
+    END='\e[0m'
 
     COLUMNS=$(tput cols)
     printf "$RED%*s\n$END" $(((${#1}+$COLUMNS)/2)) "$1"
@@ -37,23 +37,30 @@ self_update()
         # checking for difference in both scripts
         DIFF=$(diff "$SCRIPT_FULLPATH" "$NEWSCRIPT")
 
-        if [ "$DIFF" != "" ]
+        if [ ! -z "$DIFF" ]
         then
-            echo "Running the new version..."
-            #sh up.sh
-            bash "$NEWSCRIPT" "$ARGS"
+            # running the new version
+            sh "$NEWSCRIPT" "$ARGS"
 
             # now exit this old instance
             exit 1
         else
-            echo "Running version $VERSION, already the latest version."
+            # deleting the downloaded script (which is the same)
+            sudo rm -rf "$NEWSCRIPT"
+
+            display_center "********************************************************************"
+            display_center "RUNNING VERSION $VERSION, ALREADY THE LATEST VERSION."
+            display_center "********************************************************************"
 
             main
         fi
     else
-        if [ "$FIRST_ARG" == "" ]
+        if [ ! -z "$FIRST_ARG" ]
         then
-            echo "Found a new version $VERSION, updating myself..."
+            display_center "********************************************************************"
+            display_center "FOUND A NEW VERSION $VERSION, UPDATING MYSELF..."
+            display_center "********************************************************************"
+            
             sudo mv -f "$NEWSCRIPT" "$FIRST_ARG"
 
             main
@@ -85,7 +92,7 @@ main()
 	display_center "********************************************************************"
     display_center "REBOOT"
     display_center "********************************************************************"
-
+    
 	while true; do
 		read -p "Do you wish to reboot your pc [Y/N]?" yn
 		case $yn in
