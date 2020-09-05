@@ -2,7 +2,7 @@
 
 VERSION="0.0.2"
 
-SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/dev/up.sh"
+SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
 
 SCRIPT_FULLPATH="$0"
 SCRIPT_DIRECTORY=$(dirname "$SCRIPT_FULLPATH")
