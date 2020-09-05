@@ -54,7 +54,7 @@ self_update()
             main
         fi
     else
-        if [ "$FIRST_ARG" == "" ]
+        if [ "$FIRST_ARG" != "" ]
         then
             echo "Found a new version $VERSION, updating myself..."
             sudo mv -f "$NEWSCRIPT" "$FIRST_ARG"
