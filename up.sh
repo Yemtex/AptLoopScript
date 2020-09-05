@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.0.0"
+VERSION="1.0.1"
 
 SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
 
@@ -58,7 +58,7 @@ self_update()
         if [ ! -z "$FIRST_ARG" ]
         then
             display_center "********************************************************************"
-            display_center "FOUND A NEW VERSION $VERSION, UPDATING MYSELF..."
+            display_center "FOUND A NEW VERSION, UPDATING MYSELF..."
             display_center "********************************************************************"
             
             sudo mv -f "$NEWSCRIPT" "$FIRST_ARG"
