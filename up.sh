@@ -55,8 +55,7 @@ self_update()
 		sudo mv -f "$NEWSCRIPT" "$FIRST_ARG"
 
         main
-    fi
-            
+    fi          
 }
 
 
@@ -70,8 +69,8 @@ main()
 	for i in 1 2
 	do
 		display_center "********************************************************************"
-        display_center "STARTING"
-        display_center "********************************************************************"
+		display_center "STARTING"
+		display_center "********************************************************************"
 		sudo apt update && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y
 	done
 
