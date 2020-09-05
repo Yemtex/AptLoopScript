@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="0.1.0"
+VERSION="0.1.1"
 
 SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/dev/up.sh"
 
@@ -37,11 +37,10 @@ self_update()
         # checking for difference in both scripts
         DIFF=$(diff "$SCRIPT_FULLPATH" "$NEWSCRIPT")
 
-        if [ "$DIFF" != "" ]
+        if [ ! -z "$DIFF" ]
         then
             echo "Running the new version..."
-            #sh up.sh
-            bash "$NEWSCRIPT" "$ARGS"
+            sh "$NEWSCRIPT" "$ARGS"
 
             # now exit this old instance
             exit 1
@@ -54,7 +53,7 @@ self_update()
             main
         fi
     else
-        if [ "$FIRST_ARG" != "" ]
+        if [ ! -z "$FIRST_ARG" ]
         then
             echo "Found a new version $VERSION, updating myself..."
             sudo mv -f "$NEWSCRIPT" "$FIRST_ARG"
