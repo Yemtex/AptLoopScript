@@ -1,7 +1,8 @@
 AptLoopScript
 =======
 
-Just a simple script, which runs _**`apt`**_ with an for loop twice.  
+Just a simple script, which runs _**`apt`**_ with an for loop twice. 
+And can update itself.
 
 Script does apt:  
 
@@ -25,6 +26,3 @@ Instruction:
 1.  ```wget https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh```  
 2.  ```chmod +x up.sh```  
 3.  ```./up.sh```  
-
-Todo:
-- self-update
