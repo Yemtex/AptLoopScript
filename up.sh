@@ -1,11 +1,10 @@
 #!/bin/bash
 
-VERSION="1.0.2"
+VERSION="1.0.3"
 
 SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
 
 SCRIPT_FULLPATH=$(readlink -f "$0")
-SCRIPT_DIRECTORY=$(dirname "$SCRIPT_FULLPATH")
 
 NEWSCRIPT="/tmp/newup.sh"
 ARGS="$SCRIPT_FULLPATH"
