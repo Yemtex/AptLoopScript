@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.0.3"
+VERSION="1.0.4"
 
 SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
 
@@ -85,16 +85,7 @@ main()
 		display_center "STARTING"
 		display_center "********************************************************************"
 		
-		sudo apt update
-
-		read -p "Do you want to full-upgrade [Y/N]?" yn
-		case $yn in
-			[Yy]* ) sudo apt upgrade -y && sudo apt full-upgrade -y;;
-			[Nn]* ) exit;;
-			* ) echo "Please answer yes or no.";;
-		esac
-
-		sudo apt autoremove -y
+		sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y	
 	done
 
 	display_center "********************************************************************"
