@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.0.5"
+VERSION="1.0.6"
 
 SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
 
@@ -85,7 +85,7 @@ main()
                 display_center "STARTING"
                 display_center "********************************************************************"
 
-                if [ "$EUID" -ne 0 ]
+                if [ $(id -u) -ne 0 ]
                 then
                         sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y
                 else
