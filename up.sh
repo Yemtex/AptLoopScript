@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.0.8"
+VERSION="1.0.9"
 
 SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
 
@@ -48,7 +48,7 @@ self_update()
                         sudo rm -rf "$NEWSCRIPT"
 
                         display_center "********************************************************************"
-                        display_center "RUNNING VERSION $VERSION, ALREADY THE LATEST VERSION."
+                        display_center "NO NEW VERSION FOUND, ALREADY THE LATEST VERSION."
                         display_center "********************************************************************"
 
                         main
@@ -75,6 +75,10 @@ self_update()
 
 main()
 {
+        display_center "********************************************************************"
+        display_center "RUNNING $VERSION"
+        display_center "********************************************************************"
+
         for i in 1 2
         do
                 display_center "********************************************************************"
