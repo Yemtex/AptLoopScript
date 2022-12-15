@@ -83,9 +83,9 @@ main()
 
                 if [ $(id -u) -ne 0 ]
                 then
-                        sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y
+                        sudo apt update && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y
                 else
-                        apt update && apt full-upgrade -y && apt autoremove -y
+                        apt update && apt upgrade -y && apt full-upgrade -y && apt autoremove -y
                 fi
         done
 
