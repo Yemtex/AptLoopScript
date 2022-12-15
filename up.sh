@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.0.6"
+VERSION="1.0.7"
 
 SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
 
@@ -75,10 +75,6 @@ self_update()
 
 main()
 {
-        display_center "********************************************************************"
-        display_center "RUNNING $VERSION"
-        display_center "********************************************************************"
-
         for i in 1 2
         do
                 display_center "********************************************************************"
