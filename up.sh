@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.0.12"
+VERSION="1.0.13"
 
 SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
 
@@ -31,7 +31,7 @@ self_update()
 {
         if [ ! -f "$NEWSCRIPT" ]
         then
-                wget -O "$NEWSCRIPT" "$SCRIPT_URL"
+                wget -q -O "$NEWSCRIPT" "$SCRIPT_URL"
 
                 # checking for difference in both scripts
                 DIFF=$(diff "$SCRIPT_FULLPATH" "$NEWSCRIPT")
