@@ -89,7 +89,6 @@ my_reboot()
                 sudo reboot || sudo systemctl reboot || sudo shutdown -r now
         else
                 reboot || systemctl reboot || shutdown -r now
-                
         fi
 
         sleep 5
