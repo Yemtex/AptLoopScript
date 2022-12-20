@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.0.10"
+VERSION="1.0.11"
 
 SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
 
@@ -82,7 +82,7 @@ self_update()
         fi
 }
 
-reboot()
+my_reboot()
 {
         if [ $(id -u) -ne 0 ]
         then
@@ -123,7 +123,7 @@ main()
         while true; do
                 read -p "Do you wish to reboot your pc [Y/N]?" yn
                 case $yn in
-                        [Yy]* ) reboot;;
+                        [Yy]* ) my_reboot;;
                         [Nn]* ) exit;;
                         * ) echo "Please answer yes or no.";;
                 esac
