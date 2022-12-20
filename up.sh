@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.0.11"
+VERSION="1.0.12"
 
 SCRIPT_URL="https://raw.githubusercontent.com/Yemtex/AptLoopScript/master/up.sh"
 
