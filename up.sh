@@ -45,7 +45,12 @@ self_update()
                         exit 1
                 else
                         # deleting the downloaded script (which is the same)
-                        sudo rm -rf "$NEWSCRIPT"
+                        if [ $(id -u) -ne 0 ]
+                        then
+                                sudo rm -rf "$NEWSCRIPT"
+                        else
+                                rm -rf "$NEWSCRIPT"
+                        fi
 
                         display_center "********************************************************************"
                         display_center "NO NEW VERSION FOUND, ALREADY THE LATEST VERSION."
@@ -60,7 +65,12 @@ self_update()
                         display_center "FOUND A NEW VERSION, UPDATING MYSELF..."
                         display_center "********************************************************************"
 
-                        sudo mv -f "$NEWSCRIPT" "$FIRST_ARG"
+                        if [ $(id -u) -ne 0 ]
+                        then
+                                sudo mv -f "$NEWSCRIPT" "$FIRST_ARG"
+                        else
+                                mv -f "$NEWSCRIPT" "$FIRST_ARG"
+                        fi
 
                         main
                 else
@@ -70,6 +80,19 @@ self_update()
                         display_center "********************************************************************"
                 fi
         fi
+}
+
+reboot()
+{
+        if [ $(id -u) -ne 0 ]
+        then
+                sudo reboot || sudo systemctl reboot || sudo shutdown -r now
+        else
+                reboot || systemctl reboot || shutdown -r now
+                
+        fi
+
+        sleep 5
 }
 
 
@@ -100,7 +123,7 @@ main()
         while true; do
                 read -p "Do you wish to reboot your pc [Y/N]?" yn
                 case $yn in
-                        [Yy]* ) sudo reboot || sudo systemctl reboot || sudo shutdown -r now; sleep 5;;
+                        [Yy]* ) reboot;;
                         [Nn]* ) exit;;
                         * ) echo "Please answer yes or no.";;
                 esac
